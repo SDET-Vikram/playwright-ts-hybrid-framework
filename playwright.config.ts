@@ -1,7 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import { environment } from './src/config/environment';
 
 const isCI = Boolean(process.env.CI);
 
@@ -17,7 +15,7 @@ export default defineConfig({
     ['allure-playwright', { resultsDir: 'allure-results' }],
   ],
   use: {
-    baseURL: process.env.UI_BASE_URL ?? 'https://www.saucedemo.com',
+    baseURL: environment.uiBaseUrl,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -25,12 +23,12 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium-ui',
-      testMatch: /.*\.ui\.spec\.ts/,
+      testMatch: /.*\\.ui\\.spec\\.ts/,
       use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'api',
-      testMatch: /.*\.api\.spec\.ts/,
+      testMatch: /.*\\.api\\.spec\\.ts/,
     },
   ],
 });
