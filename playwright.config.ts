@@ -23,12 +23,12 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium-ui',
-      testMatch: /.*\\.ui\\.spec\\.ts/,
+      testMatch: /.*\.ui\.spec\.ts/,
       use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'api',
-      testMatch: /.*\\.api\\.spec\\.ts/,
+      testMatch: /.*\.api\.spec\.ts/,
     },
   ],
 });
