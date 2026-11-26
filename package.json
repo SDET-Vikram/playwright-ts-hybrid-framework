@@ -1,0 +1,25 @@
+{
+  "name": "playwright-ts-hybrid-framework",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interview-focused hybrid UI and API automation framework using Playwright and TypeScript",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --project=chromium-ui",
+    "test:api": "playwright test --project=api",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit",
+    "allure:generate": "allure generate ./allure-results --clean -o ./allure-report",
+    "allure:open": "allure open ./allure-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^22.19.0",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.3.2",
+    "dotenv": "^16.6.1",
+    "typescript": "^5.9.3"
+  }
+}
