@@ -9,11 +9,11 @@ function readHttpUrl(name: string, fallback: string): string {
   try {
     parsedUrl = new URL(value);
   } catch {
-    throw new Error(\`Environment variable \${name} must be a valid URL.\`);
+    throw new Error('Environment variable ' + name + ' must be a valid URL.');
   }
 
   if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
-    throw new Error(\`Environment variable \${name} must use HTTP or HTTPS.\`);
+    throw new Error('Environment variable ' + name + ' must use HTTP or HTTPS.');
   }
 
   return parsedUrl.toString().replace(/\/$/, '');
