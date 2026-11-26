@@ -13,21 +13,47 @@ The architecture, technical decisions, implementation reviews, and acceptance of
 
 Only public demo applications, public demo credentials, and synthetic test data are intended for this project. Do not add employer code, confidential data, credentials, `.env` files, browser authentication state, or other secrets.
 
-## Planned capabilities
+## Implemented foundation
 
 - Playwright with TypeScript strict mode
-- Page Object Model for UI workflows
-- Custom Playwright fixtures and isolated test setup
-- API client/service abstraction
-- Externalized test data and environment-based configuration
-- Playwright HTML and Allure reporting
+- SauceDemo login Page Object
+- Custom fixtures for UI page object and API client lifecycle
+- Restful Booker API client abstraction
+- Environment URL validation
+- Externalized synthetic UI test data
+- Initial UI login and API booking-list tests
+- Playwright HTML and Allure reporting configuration
 - Failure diagnostics: screenshots, videos, and traces
-- GitHub Actions continuous integration
 
-## Project status
+## Run locally
 
-The repository is being built incrementally. The `docs/PROJECT_BUILD_JOURNAL.md` document records each milestone, the reasoning behind design choices, implementation details, verification evidence, and interview-ready explanations. A capability is described as complete only after the relevant checks have actually been run.
+Requirements: a supported Node.js LTS release and npm.
 
-## Getting started
+```bash
+npm install
+cp .env.example .env
+npx playwright install chromium
+npm run typecheck
+npm run test:ui
+npm run test:api
+```
 
-Setup and execution instructions will be added alongside the implementation in the upcoming milestones.
+On Windows PowerShell, copy the environment template with:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+The default environment values target only the public demo applications. Use synthetic test data; never put real credentials or tokens in `.env.example` or commit a populated `.env` file.
+
+## Test selection
+
+- `npm test` — all configured projects
+- `npm run test:ui` — SauceDemo Chromium UI tests
+- `npm run test:api` — Restful Booker API tests
+- `npm run typecheck` — TypeScript validation
+- `npm run report` — open the Playwright HTML report after a run
+
+## Project status and engineering journal
+
+This repository is being built incrementally. The `docs/PROJECT_BUILD_JOURNAL.md` document records each milestone, the reasoning behind design choices, implementation details, verification evidence, troubleshooting notes, and interview-ready explanations. A capability is described as verified only after the relevant checks have actually been run.
