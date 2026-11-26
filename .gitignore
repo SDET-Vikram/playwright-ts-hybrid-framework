@@ -1,0 +1,17 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+allure-results/
+allure-report/
+blob-report/
+coverage/
+
+.env
+.env.*
+!.env.example
+
+playwright/.auth/
+storageState.json
+*.log
+.DS_Store
